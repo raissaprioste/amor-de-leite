@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identidade Visual — Amor de Leite</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Satisfy&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mel:        #E8B84B;
+    --mel-escuro: #b8881a;
+    --mel-claro:  #fff8e1;
+    --mel-palido: #fffbf0;
+    --marrom:     #3d2e1e;
+    --cafe:       #584534;
+    --cafe-claro: #8a7060;
+    --neutro:     #e8dfc0;
+    --borda:      #e0d8b8;
+    --rodape-bg:  #fff3c4;
+    --branco:     #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--mel-palido);
+    color: var(--marrom);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ══════════════════════════════════════
+     CAPA
+  ══════════════════════════════════════ */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 64px 56px;
+    background: var(--mel);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* onda orgânica no fundo da capa */
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 120px;
+    background: var(--mel-palido);
+    clip-path: ellipse(60% 100% at 50% 100%);
+  }
+
+  .cover-blob-1 {
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: var(--mel-escuro);
+    opacity: 0.12;
+  }
+  .cover-blob-2 {
+    position: absolute;
+    bottom: 80px; left: -80px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: var(--marrom);
+    opacity: 0.06;
+  }
+  .cover-blob-3 {
+    position: absolute;
+    top: 40%; right: 80px;
+    width: 1px; height: 35%;
+    background: rgba(61,46,30,0.15);
+  }
+
+  .cover-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(61,46,30,0.55);
+    position: relative; z-index: 1;
+  }
+
+  .cover-body {
+    max-width: 600px;
+    position: relative; z-index: 1;
+  }
+
+  .cover-script {
+    font-family: 'Satisfy', cursive;
+    font-size: 22px;
+    color: var(--marrom);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+
+  .cover-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 9vw, 86px);
+    font-weight: 500;
+    color: var(--marrom);
+    line-height: 0.95;
+    margin-bottom: 6px;
+  }
+
+  .cover-name span {
+    display: block;
+    font-size: clamp(30px, 5vw, 50px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(61,46,30,0.6);
+  }
+
+  .cover-bio {
+    font-size: 14px;
+    color: var(--cafe);
+    max-width: 440px;
+    line-height: 1.65;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 0.5px solid rgba(61,46,30,0.18);
+  }
+
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative; z-index: 1;
+    padding-bottom: 60px;
+  }
+
+  .cover-meta {
+    font-size: 11px;
+    color: rgba(61,46,30,0.5);
+    line-height: 1.8;
+  }
+
+  .cover-dots { display: flex; gap: 8px; }
+  .cover-dot  { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* ══════════════════════════════════════
+     SECTIONS
+  ══════════════════════════════════════ */
+  .section {
+    padding: 72px 56px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section + .section { border-top: 1px solid var(--borda); }
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mel-escuro);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--marrom);
+    margin-bottom: 40px;
+    line-height: 1.1;
+  }
+
+  .col-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cafe-claro);
+    margin-bottom: 14px;
+  }
+
+  /* ══════════════════════════════════════
+     PALETA
+  ══════════════════════════════════════ */
+  .palette-primary   { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
+  .palette-secondary { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+
+  .swatch    { height: 96px; border-radius: 14px; margin-bottom: 10px; }
+  .swatch-sm { height: 64px; border-radius: 10px; margin-bottom: 8px; }
+  .swatch-hex  { font-size: 13px; font-weight: 500; color: var(--marrom); margin-bottom: 1px; }
+  .swatch-name { font-size: 12px; color: var(--cafe-claro); margin-bottom: 1px; }
+  .swatch-role { font-size: 11px; color: var(--cafe-claro); opacity: 0.7; }
+
+  /* contraste */
+  .contrast-table { width:100%; border-collapse:collapse; margin-top:24px; }
+  .contrast-table th {
+    font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--cafe-claro); text-align:left; padding:0 0 10px;
+    border-bottom:1px solid var(--borda);
+  }
+  .contrast-table td { padding:12px 0; border-bottom:0.5px solid var(--borda); font-size:13px; vertical-align:middle; }
+  .contrast-table tr:last-child td { border-bottom:none; }
+  .contrast-preview {
+    width:72px; height:36px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:500; font-family:'DM Sans',sans-serif;
+  }
+
+  .badge-aa      { background:#eaf3de; color:#3b6d11; font-size:11px; font-weight:500; padding:2px 8px; border-radius:20px; display:inline-block; }
+  .badge-aaa     { background:#c0dd97; color:#27500a; font-size:11px; font-weight:500; padding:2px 8px; border-radius:20px; display:inline-block; }
+  .badge-fail    { background:#f7c1c1; color:#791f1f; font-size:11px; font-weight:500; padding:2px 8px; border-radius:20px; display:inline-block; }
+  .badge-partial { background:#fac775; color:#633806; font-size:11px; font-weight:500; padding:2px 8px; border-radius:20px; display:inline-block; }
+
+  /* ══════════════════════════════════════
+     TIPOGRAFIA
+  ══════════════════════════════════════ */
+  .type-block {
+    padding: 28px 32px;
+    background: var(--mel-claro);
+    border-radius: 16px;
+    border: 0.5px solid var(--borda);
+    margin-bottom: 16px;
+  }
+
+  .type-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+  .type-label { font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--mel-escuro); }
+  .type-spec  { font-size:11px; color:var(--cafe-claro); font-family:monospace; }
+
+  .type-code {
+    background: var(--mel-palido);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--cafe);
+    line-height: 2;
+  }
+
+  .type-uses { display:flex; flex-wrap:wrap; gap:6px; padding-top:16px; border-top:0.5px solid var(--borda); }
+  .use-pill   { font-size:10px; padding:3px 9px; border-radius:20px; background:var(--mel-palido); color:var(--cafe); border:0.5px solid var(--borda); }
+  .avoid-pill { font-size:10px; padding:3px 9px; border-radius:20px; background:#fdf0f0; color:#8b3d3d; border:0.5px solid #e8cece; }
+
+  /* hierarquia */
+  .hierarchy-demo {
+    background: var(--mel-claro);
+    border-radius: 20px;
+    padding: 48px;
+    border: 0.5px solid var(--borda);
+    margin-top: 32px;
+  }
+
+  .hierarchy-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 0.5px solid var(--borda);
+  }
+  .hierarchy-row:last-child { border-bottom:none; }
+  .hierarchy-label { font-size:10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--cafe-claro); }
+
+  /* botões */
+  .btn-primary {
+    display:inline-block; background:var(--mel); color:var(--marrom);
+    font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;
+    padding:10px 22px; border-radius:100px; text-decoration:none;
+  }
+  .btn-outline {
+    display:inline-block; background:transparent; color:var(--cafe);
+    font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;
+    padding:9px 21px; border-radius:100px; border:1px solid var(--mel);
+    text-decoration:none;
+  }
+
+  /* ══════════════════════════════════════
+     APLICAÇÕES
+  ══════════════════════════════════════ */
+
+  /* serviços — pílulas orgânicas */
+  .svc-pill-grid { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+
+  .svc-pill {
+    display:flex; align-items:center; gap:14px;
+    background: var(--branco);
+    border: 0.5px solid var(--borda);
+    border-radius: 100px;
+    padding: 12px 20px 12px 12px;
+  }
+
+  .svc-pill-bubble {
+    flex-shrink:0; width:36px; height:36px;
+    background:var(--mel-claro); border:1.5px solid var(--mel);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .svc-pill-title {
+    font-family:'Playfair Display',serif;
+    font-size:14px; font-weight:500; color:var(--marrom);
+    margin-bottom:2px; line-height:1.2;
+  }
+  .svc-pill-desc { font-size:12px; color:var(--cafe-claro); line-height:1.45; }
+
+  /* cartão escuro */
+  .dark-card {
+    background: var(--marrom);
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin-top: 20px;
+  }
+
+  /* badge pill (Medela) */
+  .medela-pill {
+    display:flex; align-items:center; gap:14px;
+    background:var(--mel); border-radius:100px;
+    padding:11px 20px 11px 11px; margin-top:20px;
+  }
+  .medela-pill-icon {
+    flex-shrink:0; width:34px; height:34px;
+    background:var(--marrom); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .medela-pill-title { font-size:13px; font-weight:500; color:var(--marrom); margin-bottom:2px; }
+  .medela-pill-sub   { font-size:11px; color:rgba(61,46,30,0.65); line-height:1.4; }
+
+  /* depoimento */
+  .proof-card {
+    background: var(--mel-claro);
+    border-left: 3px solid var(--mel);
+    border-radius: 0 14px 14px 0;
+    padding: 20px 24px;
+    margin-top: 20px;
+  }
+  .proof-mark  { font-family:'Playfair Display',serif; font-size:48px; color:var(--mel); line-height:0.7; opacity:0.5; display:block; margin-bottom:8px; }
+  .proof-quote { font-family:'Playfair Display',serif; font-size:15px; font-style:italic; color:var(--marrom); line-height:1.6; margin-bottom:8px; }
+  .proof-author{ font-size:10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--mel-escuro); }
+
+  /* onda de seção */
+  .wave-block {
+    background: var(--mel);
+    border-radius: 20px;
+    padding: 40px 44px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .wave-block::before {
+    content:'';
+    position:absolute;
+    bottom:-2px; left:0; right:0;
+    height:50px;
+    background:var(--mel-palido);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .wave-block::after {
+    content:'';
+    position:absolute;
+    top:-60px; right:-60px;
+    width:180px; height:180px;
+    border-radius:50%;
+    background:var(--mel-escuro);
+    opacity:0.12;
+  }
+
+  /* ══════════════════════════════════════
+     DIRETRIZES
+  ══════════════════════════════════════ */
+  .rules-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+  .rule-card {
+    padding:20px 22px;
+    border-radius:14px;
+    border:0.5px solid var(--borda);
+    background:var(--branco);
+  }
+  .rule-icon { font-size:20px; margin-bottom:8px; display:block; }
+  .rule-title { font-size:13px; font-weight:500; color:var(--marrom); margin-bottom:5px; }
+  .rule-body  { font-size:12px; color:var(--cafe-claro); line-height:1.55; }
+
+  /* relação com marca-mãe */
+  .brand-link {
+    display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px;
+  }
+
+  .brand-link-card {
+    padding:24px 28px;
+    border-radius:16px;
+    border:0.5px solid var(--borda);
+  }
+
+  .brand-link-tag {
+    font-size:10px; font-weight:500; letter-spacing:0.1em;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+
+  .brand-link-name {
+    font-family:'Playfair Display',serif;
+    font-size:20px; font-weight:500; margin-bottom:6px;
+  }
+
+  .brand-link-desc { font-size:12px; color:var(--cafe-claro); line-height:1.55; }
+
+  .brand-link-swatches { display:flex; gap:6px; margin-top:14px; }
+  .brand-link-swatch   { width:18px; height:18px; border-radius:50%; }
+
+  /* ══════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════ */
+  .doc-footer {
+    background: var(--marrom);
+    padding: 64px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .doc-footer::before {
+    content:'';
+    position:absolute;
+    top:-2px; left:0; right:0;
+    height:80px;
+    background:var(--mel-palido);
+    clip-path: ellipse(55% 100% at 50% 0%);
+  }
+
+  .footer-blob {
+    position:absolute;
+    bottom:-80px; right:-80px;
+    width:260px; height:260px;
+    border-radius:50%;
+    background:var(--mel);
+    opacity:0.07;
+  }
+
+  .footer-script { font-family:'Satisfy',cursive; font-size:32px; color:var(--mel); margin-bottom:12px; position:relative; z-index:1; }
+  .footer-name   { font-family:'Playfair Display',serif; font-size:20px; font-weight:500; color:var(--mel-claro); margin-bottom:8px; position:relative; z-index:1; }
+  .footer-body   { font-size:11px; color:var(--mel-claro); opacity:0.35; line-height:1.9; position:relative; z-index:1; }
+
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     CAPA
+════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-blob-1"></div>
+  <div class="cover-blob-2"></div>
+  <div class="cover-blob-3"></div>
+
+  <div class="cover-tag">Identidade Visual · Versão 1.0</div>
+
+  <div class="cover-body">
+    <div class="cover-script">com amor, cuidado e suporte</div>
+    <div class="cover-name">
+      Amor de Leite
+      <span>por Milena Brandão</span>
+    </div>
+    <div class="cover-bio">
+      Aluguel de bombas extratoras Medela, rosquinhas para alívio do peito e consultoria especializada em amamentação — para que cada mãe tenha o suporte que merece, do primeiro dia em diante.<br><br>
+      <span style="color:var(--cafe-claro); font-size:12px;">@amordeleite_maringa · Maringá e região · Empresa irmã de Milena Doula</span>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-meta">
+      @amordeleite_maringa<br>
+      Documento de uso interno · Paleta, tipografia e aplicações
+    </div>
+    <div class="cover-dots">
+      <div class="cover-dot" style="background:var(--marrom);"></div>
+      <div class="cover-dot" style="background:rgba(61,46,30,0.25);"></div>
+      <div class="cover-dot" style="background:var(--mel-escuro);"></div>
+      <div class="cover-dot" style="background:var(--marrom); opacity:0.4;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     01 PALETA
+════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">01 — Cores</div>
+  <div class="section-title">Paleta de cores</div>
+
+  <div class="col-label">Cores principais</div>
+  <div class="palette-primary">
+    <div>
+      <div class="swatch" style="background:#E8B84B;"></div>
+      <div class="swatch-hex">#E8B84B</div>
+      <div class="swatch-name">Mel</div>
+      <div class="swatch-role">Acento principal · CTA · destaque</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#fffbf0; border:1px solid var(--borda);"></div>
+      <div class="swatch-hex">#fffbf0</div>
+      <div class="swatch-name">Creme pálido</div>
+      <div class="swatch-role">Fundo principal</div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#3d2e1e;"></div>
+      <div class="swatch-hex">#3d2e1e</div>
+      <div class="swatch-name">Marrom profundo</div>
+      <div class="swatch-role">Texto principal · estrutura</div>
+    </div>
+  </div>
+
+  <div class="col-label" style="margin-top:32px;">Complementos</div>
+  <div class="palette-secondary">
+    <div>
+      <div class="swatch-sm" style="background:#b8881a;"></div>
+      <div class="swatch-hex" style="font-size:12px;">#b8881a</div>
+      <div class="swatch-name">Mel escuro</div>
+      <div class="swatch-role">Eyebrows · labels</div>
+    </div>
+    <div>
+      <div class="swatch-sm" style="background:#fff8e1; border:1px solid var(--borda);"></div>
+      <div class="swatch-hex" style="font-size:12px;">#fff8e1</div>
+      <div class="swatch-name">Mel pálido</div>
+      <div class="swatch-role">Cards · blocos info</div>
+    </div>
+    <div>
+      <div class="swatch-sm" style="background:#fff3c4; border:1px solid var(--borda);"></div>
+      <div class="swatch-hex" style="font-size:12px;">#fff3c4</div>
+      <div class="swatch-name">Manteiga</div>
+      <div class="swatch-role">Rodapés · seções suaves</div>
+    </div>
+    <div>
+      <div class="swatch-sm" style="background:#584534;"></div>
+      <div class="swatch-hex" style="font-size:12px;">#584534</div>
+      <div class="swatch-name">Café</div>
+      <div class="swatch-role">Texto secundário</div>
+    </div>
+  </div>
+
+  <!-- CONTRASTE -->
+  <div style="margin-top:48px;">
+    <div class="col-label">Contraste — pares aprovados (WCAG)</div>
+    <table class="contrast-table">
+      <thead>
+        <tr>
+          <th style="width:84px;">Prévia</th>
+          <th>Par</th>
+          <th>Uso recomendado</th>
+          <th>Nível</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="contrast-preview" style="background:#fffbf0; color:#3d2e1e; border:1px solid var(--borda);">Aa</div></td>
+          <td style="color:var(--cafe);">#3d2e1e sobre #fffbf0</td>
+          <td style="color:var(--cafe-claro);">Texto corrido, títulos, rodapés</td>
+          <td><span class="badge-aaa">AAA · 14,2:1</span></td>
+        </tr>
+        <tr>
+          <td><div class="contrast-preview" style="background:#E8B84B; color:#3d2e1e;">Aa</div></td>
+          <td style="color:var(--cafe);">#3d2e1e sobre #E8B84B</td>
+          <td style="color:var(--cafe-claro);">Botões, badges, CTAs</td>
+          <td><span class="badge-aaa">AAA · 7,1:1</span></td>
+        </tr>
+        <tr>
+          <td><div class="contrast-preview" style="background:#3d2e1e; color:#E8B84B;">Aa</div></td>
+          <td style="color:var(--cafe);">#E8B84B sobre #3d2e1e</td>
+          <td style="color:var(--cafe-claro);">Texto em fundo escuro · destaques</td>
+          <td><span class="badge-aaa">AAA · 7,1:1</span></td>
+        </tr>
+        <tr>
+          <td><div class="contrast-preview" style="background:#fffbf0; color:#b8881a; border:1px solid var(--borda);">Aa</div></td>
+          <td style="color:var(--cafe);">#b8881a sobre #fffbf0</td>
+          <td style="color:var(--cafe-claro);">Labels, eyebrows — evitar em corpo</td>
+          <td><span class="badge-aa">AA · 4,7:1</span></td>
+        </tr>
+        <tr>
+          <td><div class="contrast-preview" style="background:#E8B84B; color:#584534;">Aa</div></td>
+          <td style="color:var(--cafe);">#584534 sobre #E8B84B</td>
+          <td style="color:var(--cafe-claro);">Apenas decorativo — não usar em texto pequeno</td>
+          <td><span class="badge-partial">AA parcial · 3,4:1</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     02 TIPOGRAFIA
+════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">02 — Tipografia</div>
+  <div class="section-title">Sistema tipográfico</div>
+
+  <p style="font-size:13px; color:var(--cafe-claro); margin-bottom:32px; max-width:560px;">
+    O Amor de Leite compartilha o mesmo sistema tipográfico da marca-mãe <strong style="color:var(--cafe);">Milena Doula</strong> — garantindo coesão entre as marcas. O que muda é a paleta: o rosa é substituído pelo mel, e o pêssego pelo creme amarelado.
+  </p>
+
+  <!-- PLAYFAIR -->
+  <div class="type-block">
+    <div class="type-meta">
+      <div class="type-label">Playfair Display — títulos</div>
+      <div class="type-spec">Google Fonts · serifada · gratuita</div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <div style="font-family:'Playfair Display',serif; font-size:46px; font-weight:500; color:var(--marrom); line-height:1.0; margin-bottom:6px;">Amor de Leite</div>
+      <div style="font-family:'Playfair Display',serif; font-size:26px; font-weight:500; color:var(--cafe); line-height:1.1; margin-bottom:6px;">Consultoria em amamentação</div>
+      <div style="font-family:'Playfair Display',serif; font-size:19px; font-weight:500; color:var(--cafe); margin-bottom:8px;">Aluguel de bombas Medela</div>
+      <div style="font-family:'Playfair Display',serif; font-size:21px; font-style:italic; color:var(--cafe);">"A amamentação é amor que nutre de dentro para fora."</div>
+    </div>
+    <div class="type-code">
+      H1 · 500 · 40–48px · #3d2e1e · line-height 1.05<br>
+      H2 · 500 · 26–30px · #584534 · line-height 1.15<br>
+      H3 · 500 · 18–20px · #584534 · line-height 1.2<br>
+      Itálico · 400 italic · 20–26px · #584534
+    </div>
+    <div class="type-uses">
+      <span class="use-pill">hero do site</span>
+      <span class="use-pill">títulos de posts</span>
+      <span class="use-pill">materiais impressos</span>
+      <span class="use-pill">depoimentos</span>
+      <span class="avoid-pill">nunca abaixo de 16px</span>
+      <span class="avoid-pill">evitar peso 700 em títulos longos</span>
+    </div>
+  </div>
+
+  <!-- SATISFY -->
+  <div class="type-block">
+    <div class="type-meta">
+      <div class="type-label">Satisfy — acento manuscrito</div>
+      <div class="type-spec">Google Fonts · manuscrita · gratuita</div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <div style="font-family:'Satisfy',cursive; font-size:36px; color:var(--mel-escuro); line-height:1.3; margin-bottom:8px;">Amor de Leite</div>
+      <div style="font-family:'Satisfy',cursive; font-size:24px; color:var(--cafe); line-height:1.3; margin-bottom:8px;">por Milena Brandão</div>
+      <div style="font-family:'Satisfy',cursive; font-size:20px; color:var(--cafe-claro); line-height:1.3;">mínimo legível — 20px</div>
+    </div>
+    <div class="type-code">
+      Logotipo/assinatura · 400 · 28–36px · #b8881a<br>
+      Subtítulo decorativo · 400 · 22–28px · #584534<br>
+      Mínimo absoluto · 20px · nunca abaixo disso
+    </div>
+    <div class="type-uses">
+      <span class="use-pill">assinatura do logo</span>
+      <span class="use-pill">subtítulo antes do H1</span>
+      <span class="use-pill">elemento gráfico em posts</span>
+      <span class="avoid-pill">nunca em texto corrido</span>
+      <span class="avoid-pill">nunca abaixo de 20px</span>
+      <span class="avoid-pill">máx. 4–5 palavras por vez</span>
+    </div>
+  </div>
+
+  <!-- DM SANS -->
+  <div class="type-block">
+    <div class="type-meta">
+      <div class="type-label">DM Sans — corpo e interface</div>
+      <div class="type-spec">Google Fonts · sem serifa · gratuita</div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <div style="font-family:'DM Sans',sans-serif; font-size:15px; color:var(--cafe); line-height:1.7; margin-bottom:12px; max-width:520px;">Aluguel de bombas extratoras Medela em Maringá e região. Swing, Pump in Style e Freestyle disponíveis por 7, 15 ou 30 dias — com entrega e retirada.</div>
+      <div style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--cafe); margin-bottom:14px;">Aluguel · Consultoria · Laserterapia</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <span class="btn-primary">Falar pelo WhatsApp</span>
+        <span class="btn-outline">Saiba mais</span>
+        <span style="font-size:12px; color:var(--cafe-claro); font-family:'DM Sans',sans-serif;">@amordeleite_maringa</span>
+      </div>
+    </div>
+    <div class="type-code">
+      Corpo · 400 · 15–16px · #584534 · line-height 1.7<br>
+      Label · 500 · 11–12px · letter-spacing 0.08em · uppercase<br>
+      Botão · 500 · 13–14px · #3d2e1e sobre #E8B84B<br>
+      Metadado · 400 · 12px · #8a7060
+    </div>
+    <div class="type-uses">
+      <span class="use-pill">texto de site</span>
+      <span class="use-pill">legendas do Instagram</span>
+      <span class="use-pill">botões e CTAs</span>
+      <span class="use-pill">WhatsApp</span>
+      <span class="use-pill">labels e tags</span>
+      <span class="avoid-pill">evitar peso 300 em mobile</span>
+    </div>
+  </div>
+
+  <!-- HIERARQUIA -->
+  <div style="margin-top:40px;">
+    <div class="col-label">Hierarquia em contexto real</div>
+    <div class="hierarchy-demo">
+      <div class="hierarchy-row">
+        <div class="hierarchy-label">Acento manuscrito</div>
+        <div style="font-family:'Satisfy',cursive; font-size:22px; color:var(--mel-escuro);">com amor e suporte</div>
+      </div>
+      <div class="hierarchy-row">
+        <div class="hierarchy-label">H1 — título</div>
+        <div style="font-family:'Playfair Display',serif; font-size:38px; font-weight:500; color:var(--marrom); line-height:1.0;">Amamentação mais leve,<br>do primeiro dia em diante.</div>
+      </div>
+      <div class="hierarchy-row">
+        <div class="hierarchy-label">H2 — subtítulo</div>
+        <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:500; color:var(--cafe);">Aluguel · Consultoria · Suporte</div>
+      </div>
+      <div class="hierarchy-row">
+        <div class="hierarchy-label">Itálico — citação</div>
+        <div style="font-family:'Playfair Display',serif; font-size:18px; font-style:italic; color:var(--cafe);">"Você salvou nós duas."</div>
+      </div>
+      <div class="hierarchy-row">
+        <div class="hierarchy-label">Corpo — texto</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:15px; color:var(--cafe); line-height:1.7; max-width:460px;">Atendimento em Maringá e região, com bombas extratoras Medela disponíveis para aluguel e consultoria presencial ou online.</div>
+      </div>
+      <div class="hierarchy-row" style="border-bottom:none;">
+        <div class="hierarchy-label">CTA — botão</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <span class="btn-primary">Falar pelo WhatsApp</span>
+          <span class="btn-outline">Ver modelos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     03 FORMAS E LINGUAGEM VISUAL
+════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">03 — Linguagem visual</div>
+  <div class="section-title">Formas orgânicas</div>
+
+  <p style="font-size:13px; color:var(--cafe-claro); margin-bottom:32px; max-width:560px;">
+    O Amor de Leite usa formas fluidas e arredondadas como princípio de design — pílulas, elipses, ondas e bolhas. Cantos vivos e grids rígidos devem ser evitados. A linguagem visual reflete acolhimento, suavidade e naturalidade.
+  </p>
+
+  <!-- demonstração de formas -->
+  <div class="col-label">Formas aprovadas</div>
+  <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:32px; align-items:flex-end;">
+    <div style="text-align:center;">
+      <div style="width:80px; height:80px; background:var(--mel); border-radius:50%; margin:0 auto 8px;"></div>
+      <div style="font-size:11px; color:var(--cafe-claro);">Círculo</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:120px; height:48px; background:var(--mel); border-radius:100px; margin:0 auto 8px;"></div>
+      <div style="font-size:11px; color:var(--cafe-claro);">Pílula</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:120px; height:80px; background:var(--mel); border-radius:20px; margin:0 auto 8px;"></div>
+      <div style="font-size:11px; color:var(--cafe-claro);">Arredondado</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:140px; height:40px; background:var(--mel); border-radius:0 0 50% 50% / 0 0 20px 20px; margin:0 auto 8px;"></div>
+      <div style="font-size:11px; color:var(--cafe-claro);">Onda inferior</div>
+    </div>
+  </div>
+
+  <div class="col-label">Formas a evitar</div>
+  <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px; align-items:flex-end;">
+    <div style="text-align:center; opacity:0.4;">
+      <div style="width:80px; height:80px; background:var(--neutro); border-radius:0; margin:0 auto 8px; position:relative;">
+        <div style="position:absolute; inset:-2px; border:2px solid #c0392b; border-radius:0;"></div>
+      </div>
+      <div style="font-size:11px; color:#c0392b;">Cantos vivos</div>
+    </div>
+    <div style="text-align:center; opacity:0.4;">
+      <div style="width:120px; height:48px; background:var(--neutro); border-radius:4px; margin:0 auto 8px; position:relative;">
+        <div style="position:absolute; inset:-2px; border:2px solid #c0392b; border-radius:4px;"></div>
+      </div>
+      <div style="font-size:11px; color:#c0392b;">Border-radius mínimo</div>
+    </div>
+  </div>
+
+  <!-- ondas de topo/rodapé -->
+  <div class="col-label">Ondas de transição</div>
+  <div style="overflow:hidden; border-radius:16px; border:0.5px solid var(--borda); margin-bottom:0;">
+    <div style="background:var(--mel); padding:24px 32px 56px; position:relative;">
+      <div style="font-family:'Satisfy',cursive; font-size:20px; color:var(--marrom); opacity:0.8;">Amor de Leite</div>
+      <div style="position:absolute; bottom:-1px; left:0; right:0; height:48px; background:var(--mel-claro); clip-path:ellipse(55% 100% at 50% 100%);"></div>
+    </div>
+    <div style="background:var(--mel-claro); padding:24px 32px; font-size:13px; color:var(--cafe); line-height:1.6;">
+      A onda de transição entre o cabeçalho mel e o corpo creme é a assinatura visual da marca — aplicada em flyers, site e posts de carrossel.
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     04 APLICAÇÕES
+════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">04 — Aplicações</div>
+  <div class="section-title">Exemplos de uso</div>
+
+  <!-- SERVIÇOS -->
+  <div class="col-label">Cards de serviço — pílulas orgânicas</div>
+  <div class="svc-pill-grid">
+    <div class="svc-pill">
+      <div class="svc-pill-bubble">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b8881a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
+          <path d="M8 14a6 6 0 0 0 8 0"/>
+          <line x1="12" y1="18" x2="12" y2="22"/>
+        </svg>
+      </div>
+      <div>
+        <div class="svc-pill-title">Aluguel de bombas extratoras Medela</div>
+        <div class="svc-pill-desc">Swing · Pump in Style · Freestyle — 7, 15 ou 30 dias · entrega em Maringá</div>
+      </div>
+    </div>
+    <div class="svc-pill">
+      <div class="svc-pill-bubble">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b8881a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="svc-pill-title">Rosquinhas para alívio do peito</div>
+        <div class="svc-pill-desc">Para fissuras e desconforto nas primeiras semanas de amamentação</div>
+      </div>
+    </div>
+    <div class="svc-pill">
+      <div class="svc-pill-bubble">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b8881a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="svc-pill-title">Consultoria em amamentação</div>
+        <div class="svc-pill-desc">Presencial ou online · pega, produção, desmame — sem julgamento, com escuta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BADGE MEDELA -->
+  <div class="col-label" style="margin-top:40px;">Badge Medela — exclusividade</div>
+  <div class="medela-pill">
+    <div class="medela-pill-icon">
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+        <path d="M9 1.5L10.854 6.33H16L12.073 9.17L13.927 14L9 11.16L4.073 14L5.927 9.17L2 6.33H7.146L9 1.5Z" fill="#E8B84B"/>
+      </svg>
+    </div>
+    <div>
+      <div class="medela-pill-title">Trabalhamos exclusivamente com Medela</div>
+      <div class="medela-pill-sub">Eleita a bomba de leite mais confiável por mães nos EUA, Canadá e Reino Unido pelo 8º ano consecutivo — BrandSpark Most Trusted Awards, 2026</div>
+    </div>
+  </div>
+
+  <!-- DEPOIMENTO -->
+  <div class="col-label" style="margin-top:40px;">Depoimento</div>
+  <div class="proof-card">
+    <span class="proof-mark">"</span>
+    <div class="proof-quote">Sem sua ajuda e toda explicação, teria desistido do peito. Obrigada de coração — você salvou nós duas.</div>
+    <div class="proof-author">Mãe atendida · consultoria em amamentação</div>
+  </div>
+
+  <!-- BLOCO DE DESTAQUE -->
+  <div class="col-label" style="margin-top:40px;">Bloco de destaque — fundo mel</div>
+  <div class="wave-block">
+    <div style="font-family:'Satisfy',cursive; font-size:18px; color:var(--marrom); opacity:0.7; margin-bottom:8px; position:relative; z-index:1;">com amor e suporte</div>
+    <div style="font-family:'Playfair Display',serif; font-size:26px; font-weight:500; color:var(--marrom); line-height:1.1; margin-bottom:10px; position:relative; z-index:1;">Amamentação mais leve,<br><em style="font-style:italic; color:rgba(61,46,30,0.6);">do primeiro dia em diante.</em></div>
+    <div style="font-size:13px; color:var(--cafe); line-height:1.6; max-width:420px; margin-bottom:36px; position:relative; z-index:1;">Aluguel de bombas extratoras Medela, rosquinhas e consultoria especializada — em Maringá e região.</div>
+    <span class="btn-primary" style="position:relative; z-index:1; background:var(--marrom); color:var(--mel);">Falar pelo WhatsApp</span>
+  </div>
+
+  <!-- FUNDO ESCURO -->
+  <div class="col-label" style="margin-top:40px;">Aplicação em fundo escuro</div>
+  <div class="dark-card">
+    <div style="font-family:'Satisfy',cursive; font-size:16px; color:var(--mel); opacity:0.8; margin-bottom:6px;">por Milena Brandão</div>
+    <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:500; color:var(--mel-claro); line-height:1.05; margin-bottom:4px;">Amor de Leite</div>
+    <div style="font-size:11px; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; color:var(--mel); margin-bottom:12px;">@amordeleite_maringa</div>
+    <div style="font-size:11px; color:rgba(255,251,240,0.45); line-height:1.8;">
+      Aluguel de bombas Medela · Rosquinhas<br>
+      Consultoria em amamentação · Maringá e região
+    </div>
+    <div style="margin-top:20px; display:flex; gap:10px;">
+      <span style="background:var(--mel); color:var(--marrom); font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500; padding:9px 20px; border-radius:100px;">Falar pelo WhatsApp</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     05 RELAÇÃO COM MARCA-MÃE
+════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">05 — Ecossistema de marca</div>
+  <div class="section-title">Relação com a Milena Doula</div>
+
+  <p style="font-size:13px; color:var(--cafe-claro); margin-bottom:32px; max-width:560px;">
+    O Amor de Leite é uma marca filha da Milena Doula — duas empresas distintas com identidades próprias, mas claramente do mesmo universo. A coesão é garantida pelo sistema tipográfico compartilhado; a distinção, pela paleta.
+  </p>
+
+  <div class="brand-link">
+    <div class="brand-link-card" style="background:#fcf3ec; border-color:#e0d4c8;">
+      <div class="brand-link-tag" style="color:#b84d4d;">Marca-mãe</div>
+      <div class="brand-link-name" style="color:#3d2e1e;">Milena Doula</div>
+      <div class="brand-link-desc">Acompanhamento de parto, consultoria em amamentação e laserterapia. Paleta rosa/pêssego/café.</div>
+      <div class="brand-link-swatches">
+        <div class="brand-link-swatch" style="background:#b84d4d;"></div>
+        <div class="brand-link-swatch" style="background:#fcf3ec; border:1px solid #e0d4c8;"></div>
+        <div class="brand-link-swatch" style="background:#584534;"></div>
+        <div class="brand-link-swatch" style="background:#c8a882;"></div>
+      </div>
+    </div>
+    <div class="brand-link-card" style="background:var(--mel-claro); border-color:var(--borda);">
+      <div class="brand-link-tag" style="color:var(--mel-escuro);">Marca filha</div>
+      <div class="brand-link-name" style="color:var(--marrom);">Amor de Leite</div>
+      <div class="brand-link-desc">Aluguel de bombas Medela, rosquinhas e consultoria. Paleta mel/creme/marrom.</div>
+      <div class="brand-link-swatches">
+        <div class="brand-link-swatch" style="background:#E8B84B;"></div>
+        <div class="brand-link-swatch" style="background:#fffbf0; border:1px solid var(--borda);"></div>
+        <div class="brand-link-swatch" style="background:#3d2e1e;"></div>
+        <div class="brand-link-swatch" style="background:#b8881a;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px; padding:24px 28px; background:var(--branco); border-radius:14px; border:0.5px solid var(--borda);">
+    <div class="col-label" style="margin-bottom:12px;">O que as marcas compartilham</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:13px; color:var(--cafe);">
+      <div>✦ &nbsp;Playfair Display nos títulos</div>
+      <div>✦ &nbsp;Satisfy nos acentos manuscritos</div>
+      <div>✦ &nbsp;DM Sans no corpo e interface</div>
+      <div>✦ &nbsp;Marrom #3d2e1e e café #584534</div>
+      <div>✦ &nbsp;Formas orgânicas e arredondadas</div>
+      <div>✦ &nbsp;Tom de voz: acolhedor e especializado</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     06 DIRETRIZES
+════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">06 — Diretrizes</div>
+  <div class="section-title">Regras de uso</div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <span class="rule-icon">🍯</span>
+      <div class="rule-title">Mel como cor de ação</div>
+      <div class="rule-body">O #E8B84B é sempre o acento — botões, badges, destaques. Nunca use como cor de fundo de página inteira. Em grandes áreas, prefira os tons creme.</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">✦</span>
+      <div class="rule-title">Texto sobre mel: sempre marrom</div>
+      <div class="rule-body">O par #3d2e1e sobre #E8B84B tem contraste AAA (7,1:1). Nunca use texto branco ou claro sobre fundo mel — o contraste falha.</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">◯</span>
+      <div class="rule-title">Formas: sempre fluidas</div>
+      <div class="rule-body">Border-radius mínimo de 12px em cards. Botões sempre em pílula (border-radius: 100px). Cantos vivos são proibidos — quebram a linguagem orgânica da marca.</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">〰</span>
+      <div class="rule-title">Ondas de transição</div>
+      <div class="rule-body">Use clip-path ellipse para transições entre seções de cor diferente. Evite cortes retos. As ondas são a assinatura visual mais característica do Amor de Leite.</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">🔤</span>
+      <div class="rule-title">Satisfy: com parcimônia</div>
+      <div class="rule-body">Máximo de 4 a 5 palavras. Nunca abaixo de 20px. Use apenas como acento antes de um título Playfair — nunca em texto corrido ou isolada sem contexto.</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">🔗</span>
+      <div class="rule-title">Vínculo com Milena Doula</div>
+      <div class="rule-body">Sempre que possível, mencione "por Milena Brandão" em materiais do Amor de Leite. O vínculo com a marca-mãe é um ativo de credibilidade — não o esconda.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-blob"></div>
+  <div class="footer-script">Amor de Leite</div>
+  <div class="footer-name">por Milena Brandão</div>
+  <div class="footer-body">
+    Consultora em aleitamento materno · Doula · Laserterapeuta<br>
+    Maringá e região · @amordeleite_maringa<br><br>
+    Documento de identidade visual · Versão 1.0<br>
+    Paleta de cores, tipografia e aplicações · Uso digital e impresso
+  </div>
+</div>
+
+</body>
+</html>
